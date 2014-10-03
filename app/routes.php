@@ -15,3 +15,34 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::get('/resume', function()
+{
+    return "This is my resume.";
+});
+
+Route::get('/portfolio', function()
+{
+    return "This is my portfolio.";
+});
+
+Route::get('/rolldice/{guess}', function($guess)
+{
+    // GENERATE RANDOM NUMBER
+    $randomNumber = mt_rand(1,6);
+
+    if ($guess == $randomNumber) {
+        $match = "WHOA YOU GUESSED IT. YOU MUST BE A SAVANT!";
+    }
+    else {
+        $match = "Wrong. Not even close. And there were only 6 numbers to choose from. Guess better.";
+    }
+    // ARRAY TO HOLD DATA TO PASS TO VIEW
+    $data = [
+        'guess' => $guess,
+        'randomNumber' => $randomNumber,
+        'match' => $match
+    ];
+
+    return View::make('roll-dice', $data);
+});
