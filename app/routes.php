@@ -40,8 +40,8 @@ Route::get('/rolldice/{guess}', function($guess)
 
 Route::get('orm-test', function()
 {
-    $post = Post::find(1);
+    $post = Post::find(2);
     
-    return [$post->title, $post->content];
+    $post->delete();
 
 });
