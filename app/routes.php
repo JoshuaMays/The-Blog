@@ -13,15 +13,9 @@
 
 Route::get('/', 'HomeController@showWelcome');
 
-Route::get('/resume', function()
-{
-    return View::make('resume');
-});
+Route::get('/resume', 'HomeController@showResume');
 
-Route::get('/portfolio', function()
-{
-    return View::make('portfolio');
-});
+Route::get('/portfolio', 'HomeController@showPortfolio');
 
 Route::get('/rolldice/{guess}', function($guess)
 {
