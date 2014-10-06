@@ -40,13 +40,10 @@ Route::get('/rolldice/{guess}', function($guess)
 
 Route::get('orm-test', function()
 {
-    $post1 = new Post();
-    $post1->title = "Test The Title";
-    $post1->content = "Test the content too.";
-    $post1->save();
+    $posts = Post::all();
     
-    $post2 = new Post();
-    $post2->title = "This Is Also a Test Post";
-    $post2->content = "This is also some test content";
-    $post2->save();
+    foreach($posts as $post) {
+        var_dump($post);
+    }
+
 });
