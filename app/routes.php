@@ -37,3 +37,16 @@ Route::get('/rolldice/{guess}', function($guess)
 
     return View::make('roll-dice', $data);
 });
+
+Route::get('orm-test', function()
+{
+    $post1 = new Post();
+    $post1->title = "Test The Title";
+    $post1->content = "Test the content too.";
+    $post1->save();
+    
+    $post2 = new Post();
+    $post2->title = "This Is Also a Test Post";
+    $post2->content = "This is also some test content";
+    $post2->save();
+});
