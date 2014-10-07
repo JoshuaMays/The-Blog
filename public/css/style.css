@@ -8,11 +8,50 @@ body {
     background:         linear-gradient(90deg, #757F9A 10%, #D7DDE8 90%); /* W3C */
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color: #2F2F2F;
+}
+
+a, a:hover, a:focus, a:active, a.active {
+    color: #000;
+}
+
+textarea { height: auto; }
+
 #wrap {
     min-height: 100%;
     height: auto !important;
     height: 100%;
     margin: 0 auto -55px;
+}
+
+.btn-outline {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #D1D4DC;
+    background-color: #39486D;
+    border-color: #D1D4DC;
+}
+
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active,
+.btn-outline.active {
+    color: #2F2F2F;
+    background-color: #5E5E5E;
+    border-color: #2F2F2F;
+}
+
+.navbar {
+    background-color: #2F2F2F;
+    color: #EEEEEE;
+}
+
+.navbar-default .navbar-brand:hover, 
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-nav>li>a:hover, 
+.navbar-default .navbar-nav>li>a:focus {
+    color: #EEEEEE;
+    text-shadow: 1px 1px 15px rgba(255, 255, 255, .5);
 }
 
 #contentWrap {
@@ -26,9 +65,7 @@ body {
     background-color: #F8F8F8;
 }
 
-a, a:hover, a:focus, a:active, a.active {
-    color: #000;
-}
+
 @media (max-width: 767px) {
     #footer {
         margin-left: -20px;
