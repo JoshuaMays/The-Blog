@@ -94,7 +94,7 @@ return array(
 	*/
 
 	'providers' => array(
-
+		'Dollar\Generators\GeneratorsServiceProvider',
 		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
 		'Illuminate\Auth\AuthServiceProvider',
 		'Illuminate\Cache\CacheServiceProvider',
