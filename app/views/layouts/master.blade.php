@@ -68,13 +68,6 @@
         
         </div>
     </div><!-- /#pageWrap -->
-    <div id="push"></div>
-    </div>
-    <footer id="footer" class="text-center">
-        <div class="container">
-            <p class="muted credit">&copy; 2014 <a href="/index.html">Joshua Mays</a></p>
-        </div>
-    </footer>
 
     <!-- jQuery -->
     <script src="//code.jquery.com/jquery.js"></script>
