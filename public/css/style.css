@@ -25,6 +25,10 @@ textarea { height: auto; }
     margin: 0 auto -55px;
 }
 
+.contentWrapper {
+    margin-top: 30px;
+}
+
 .btn-outline {
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #D1D4DC;
@@ -64,7 +68,6 @@ textarea { height: auto; }
     color: #000;
     background-color: #F8F8F8;
 }
-
 
 @media (max-width: 767px) {
     #footer {
