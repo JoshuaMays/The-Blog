@@ -15,6 +15,7 @@
     <!-- Custom CSS -->
     <link href="/css/style.css" rel="stylesheet">
     <!-- Fonts -->
+    <link href="/css/fonts.css" rel="stylesheet">
     <link href="/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
@@ -56,7 +57,7 @@
                             <a href="{{{ action('HomeController@showResume') }}}">Resume</a>
                         </li>
                         <li class="page-scroll">
-                            <a href="/">Blog</a>
+                            <a href="{{{ action('PostsController@index') }}}">Blog</a>
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
