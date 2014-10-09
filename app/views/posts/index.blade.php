@@ -5,20 +5,24 @@
 @stop
 
 @section('content')
-    <div id="postsContainer" class="contentWrapper">
-        @forelse ($posts as $post)
+        <h1 class="text-center">POSTS, POSTS, AND MAYBE SOME SPOTS</h1>
+        <p class="text-center">{{ link_to_action('PostsController@create','POST IT UP', null, array('class' => 'btn btn-xs btn-outline')) }}</p>
+        @foreach(array_chunk($posts->all(), 2) as $row)
             <div class="row">
-              <div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 well">
-                  <article>
-                    <h3>{{{ $post->title }}}</h3>
-                    <p>{{{ $post->content }}}</p>
-                    <p><a href="/posts/{{{ $post->id }}}" class="btn btn-default" role="button">VIEW</a></p>
-                  </article>
-              </div>
+             @forelse($row as $post)
+                <div class="col-sm-12 col-md-6">
+                    <article class="well well-blog">
+                        <h3>{{{ $post->title }}}</h3>
+                        <!-- LIMIT LENGTH OF BLOG PREVIEW TO 100 CHARS, IF LONGER ADD TO SUBSTRING ... -->
+                        <p>{{{ str_limit($post->content, $limit = 100, $end = '...') }}}</p>
+                        <p><small>{{{ $post->created_at->setTimezone('America/Chicago')->format(Post::DATE_FORMAT) }}}</small></p>
+                        <p>{{ link_to_action('PostsController@show','VIEW', $post->id, array('class' => 'btn btn-xs btn-outline', 'role' => 'button')) }}</p>
+                    </article>
+                </div>
+              @empty
+                    <p>Yo, dere ain't no blog posts. How 'bout chu {{ link_to_action('PostsController@create', "POST") }} one.</p>
+              @endforelse
             </div>
-        @empty
-            <p>LOLOLOL THERE ARE NO POSTS!</p>
-        @endforelse
-            {{  $posts->links() }}
-    </div>
+        @endforeach
+        {{  $posts->appends(Request::only('tag'))->links() }}
 @stop
