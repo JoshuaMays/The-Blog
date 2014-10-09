@@ -9,7 +9,7 @@
     <title>@yield('title')</title>
 
     <!-- Bootstrap CSS -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Freelancer Theme CSS -->
     <link href="/css/freelancer.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -39,16 +39,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#page-top">ERMAGERD</a>
+                    <a class="navbar-brand" href="{{{ action('PostsController@index') }}}">ERMAGERD</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="hidden">
-                            <a href="#page-top"></a>
+                            <a href="{{{ action('PostsController@index') }}}"></a>
                         </li>
                         <li class="page-scroll">
-                            <a href="{{{ action('HomeController@showWelcome') }}}">Home</a>
+                            <a href="{{{ action('PostsController@index') }}}">Home</a>
                         </li>
                         <li class="page-scroll">
                             <a href="{{{ action('HomeController@showPortfolio') }}}">Portfolio</a>
@@ -63,16 +63,17 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        <div id="contentWrap" class="container">
+        <div class="container contentWrapper">
         
         @yield('content')
         
         </div>
+        
     </div><!-- /#pageWrap -->
-
+    @yield('footer')
     <!-- jQuery -->
-    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="/jquery/jquery-1.11.1.js"></script>
     <!-- Bootstrap JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
