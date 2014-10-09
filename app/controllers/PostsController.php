@@ -9,9 +9,9 @@ class PostsController extends \BaseController {
      */
     public function index()
     {
-        $posts = Post::paginate(6);
-        
-        return View::make('posts.index')->with('posts', $posts);
+        return View::make('posts.index', [
+            'posts' => Post::orderBy('id', 'asc')->paginate(6)
+        ]);
     }
 
 
@@ -47,9 +47,9 @@ class PostsController extends \BaseController {
      */
     public function show($id)
     {
-        $post = Post::find($id);
-
-        return View::make('posts.show')->with('post', $post);
+        return View::make('posts.show', [
+            'post' => Post::find($id)
+        ]);
     }
 
 
@@ -61,10 +61,9 @@ class PostsController extends \BaseController {
      */
     public function edit($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         
         return View::make('posts.edit')->with('post', $post);
-        // return "Displaying a form to edit a resource specified by ID: $id!";
     }
 
 
@@ -76,7 +75,7 @@ class PostsController extends \BaseController {
      */
     public function update($id)
     {
-        $post = New Post();
+        $post = Post::find($id);
         
         return $this->savePost($post);
     }
@@ -87,14 +86,17 @@ class PostsController extends \BaseController {
         $validator = Validator::make(Input::all(), Post::$rules);
         
         if($validator->fails()) {
+
             return Redirect::back()->withInput()->withErrors($validator);
         } else {
-            $post = Post::find($post->id)
+
             $post->title = Input::get('title');
             $post->content = Input::get('content');
             $post->save();
+            
+            $id = $post->id;
 
-            return Redirect::action('PostsController@show', $post->id);
+            return Redirect::action('PostsController@show', $id);
         }
     }
 
