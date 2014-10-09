@@ -33,20 +33,9 @@ class PostsController extends \BaseController {
      */
     public function store()
     {
-        $validator = Validator::make(Input::all(), Post::$rules);
+        $post = New Post();
         
-        if($validator->fails()) {
-            return Redirect::back()->withInput()->withErrors($validator);
-        } else {
-            
-            $post = new Post();
-            
-            $post->title = Input::get('title');
-            $post->content = Input::get('content');
-            $post->save();
-
-            return Redirect::action('PostsController@show', $post->id);
-        }
+        return $this->savePost($post);
     }
 
 
@@ -72,7 +61,10 @@ class PostsController extends \BaseController {
      */
     public function edit($id)
     {
-        return "Displaying a form to edit a resource specified by ID: $id!";
+        $post = Post::find($id);
+        
+        return View::make('posts.edit')->with('post', $post);
+        // return "Displaying a form to edit a resource specified by ID: $id!";
     }
 
 
@@ -84,7 +76,26 @@ class PostsController extends \BaseController {
      */
     public function update($id)
     {
-        return "Updating the changes to the resource!";
+        $post = New Post();
+        
+        return $this->savePost($post);
+    }
+    
+    protected function savePost(Post $post)
+    {
+
+        $validator = Validator::make(Input::all(), Post::$rules);
+        
+        if($validator->fails()) {
+            return Redirect::back()->withInput()->withErrors($validator);
+        } else {
+            $post = Post::find($post->id)
+            $post->title = Input::get('title');
+            $post->content = Input::get('content');
+            $post->save();
+
+            return Redirect::action('PostsController@show', $post->id);
+        }
     }
 
 
