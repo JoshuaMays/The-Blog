@@ -17,6 +17,9 @@ class HomeController extends BaseController {
 
     public function showWelcome()
     {
+        // set a value in the session
+        Session::flash('key', 'lolol');
+
         return View::make('hello');
     }
 
