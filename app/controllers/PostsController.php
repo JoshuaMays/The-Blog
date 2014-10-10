@@ -2,6 +2,13 @@
 
 class PostsController extends \BaseController {
 
+    public function __construct()
+    {
+        parent::__construct();
+        
+        $this->beforeFilter('auth.basic', array('except' => array('index','show')));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +41,7 @@ class PostsController extends \BaseController {
     public function store()
     {
         $post = New Post();
-        
+
         return $this->savePost($post);
     }
 
@@ -47,8 +54,14 @@ class PostsController extends \BaseController {
      */
     public function show($id)
     {
+        $post = Post::find($id);
+        
+        if(!$post) {
+            App::abort(404);
+        }
+        
         return View::make('posts.show', [
-            'post' => Post::find($id)
+            'post' => $post
         ]);
     }
 
@@ -62,7 +75,7 @@ class PostsController extends \BaseController {
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        
+
         return View::make('posts.edit')->with('post', $post);
     }
 
@@ -76,25 +89,35 @@ class PostsController extends \BaseController {
     public function update($id)
     {
         $post = Post::find($id);
-        
+
         return $this->savePost($post);
     }
-    
+
     protected function savePost(Post $post)
     {
 
         $validator = Validator::make(Input::all(), Post::$rules);
-        
-        if($validator->fails()) {
 
+        if($validator->fails()) {
+            $message = "Yo, Why You Frontin'?";
+            
+            Session::flash('errorMessage', $message);
+            
             return Redirect::back()->withInput()->withErrors($validator);
+
         } else {
 
             $post->title = Input::get('title');
             $post->content = Input::get('content');
             $post->save();
-            
+
             $id = $post->id;
+
+            $message = "CONGRATS IT WORKED";
+
+            Session::flash('successMessage', $message);
+            
+            Log::info("A Create/Edit Form has been submitted", Input::all());
 
             return Redirect::action('PostsController@show', $id);
         }
@@ -109,8 +132,17 @@ class PostsController extends \BaseController {
      */
     public function destroy($id)
     {
-        return "BOOM! Resource deleted!";
+        try {
+            $post = Post::findOrFail($id);
+        }
+        catch(ModelNotFoundException $e) {
+            App::abort(404);
+        }
+        
+        $post->delete();
+        Session::flash('successMessage', "You deleted: $post->title");
+        
+            return Redirect::action('PostsController@index');
+        
     }
-
-
 }
