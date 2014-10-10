@@ -17,7 +17,7 @@ class PostsController extends \BaseController {
     public function index()
     {
         return View::make('posts.index', [
-            'posts' => Post::orderBy('id', 'asc')->paginate(6)
+            'posts' => Post::orderBy('id', 'DESC')->paginate(6)
         ]);
     }
 
