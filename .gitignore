@@ -5,8 +5,4 @@ composer.phar
 .env.php
 .DS_Store
 Thumbs.db
-/public/fonts
-/public/css/freelancer*
-/public/bootstrap/
-/public/jquery
-public/css/font*
+
