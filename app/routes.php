@@ -17,12 +17,4 @@ Route::get('/resume', 'HomeController@showResume');
 
 Route::get('/portfolio', 'HomeController@showPortfolio');
 
-Route::get('orm-test', function()
-{
-    $post = Post::find(2);
-    
-    $post->delete();
-
-});
-
 Route::resource('posts', 'PostsController');
