@@ -1,15 +1,18 @@
 <?php
 
-class Post extends Eloquent
+use Conner\Tagging\TaggableTrait;
+
+class Post extends BaseModel
 {
-    use Conner\Tagging\TaggableTrait;
     
     const DATE_FORMAT = 'l, jS \\of F Y g:i A';
 
+    // FORM FIELD RESTRICTIONS FOR CREATING/EDITING POSTS
     public static $rules = array(
         'title' => 'required|max:255',
         'content' => 'required'
     );
+    
     protected $table = 'posts';
     
     protected $fillable = ['title', 'content'];
