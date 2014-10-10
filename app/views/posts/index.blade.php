@@ -15,8 +15,9 @@
                         <h3>{{{ $post->title }}}</h3>
                         <!-- LIMIT LENGTH OF BLOG PREVIEW TO 100 CHARS, IF LONGER ADD TO SUBSTRING ... -->
                         <p>{{{ str_limit($post->content, $limit = 100, $end = '...') }}}</p>
-                        <p><small>{{{ $post->created_at->setTimezone('America/Chicago')->format(Post::DATE_FORMAT) }}}</small></p>
+                        <p><small>{{{ $post->created_at->format(Post::DATE_FORMAT) }}}</small></p>
                         <p>{{ link_to_action('PostsController@show','VIEW', $post->id, array('class' => 'btn btn-xs btn-outline', 'role' => 'button')) }}</p>
+                        
                     </article>
                 </div>
               @empty
@@ -26,3 +27,5 @@
         @endforeach
         {{  $posts->appends(Request::only('tag'))->links() }}
 @stop
+
+
