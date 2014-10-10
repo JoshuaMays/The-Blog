@@ -27,6 +27,7 @@
     <![endif]-->
 </head>
 <body>
+
     <div id="wrap">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-fixed-top">
@@ -64,16 +65,26 @@
             </div><!-- /.container-fluid -->
         </nav>
         <div class="container contentWrapper">
-        
+
+            @if (Session::has('successMessage'))
+                <div class="alert alert-success alert-dismissible">{{{ Session::get('successMessage') }}}</div>
+            @endif
+
+            @if (Session::has('errorMessage'))
+                <div class="alert alert-danger alert-dismissible">{{{ Session::get('errorMessage') }}}</div>
+            @endif
+
         @yield('content')
-        
+
         </div>
-        
+
     </div><!-- /#pageWrap -->
     @yield('footer')
+
     <!-- jQuery -->
     <script src="/jquery/jquery-1.11.1.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+    @yield('bottom-script')
 </body>
 </html>
