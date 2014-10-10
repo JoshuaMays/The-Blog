@@ -54,6 +54,10 @@ textarea { height: auto; }
     border-color: #2F2F2F;
 }
 
+.btn-omg {
+    background-color: #CA3E44;
+}
+
 .contentWrapper {
     margin-top: 30px;
     padding-top: 100px;
@@ -64,32 +68,42 @@ textarea { height: auto; }
     color: #EEEEEE;
 }
 
-.navbar-default .navbar-brand:hover, 
+.navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus,
-.navbar-default .navbar-nav>li>a:hover, 
+.navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-nav>li>a:focus {
     color: #EEEEEE;
     text-shadow: 1px 1px 15px rgba(255, 255, 255, .5);
 }
 
-.pagination>li>a, 
+.pagination>li>a,
 .pagination>li>span {
     color: #39486D;
+    background-color: #D1D4DC;
 }
 
 .pagination>li>a:hover,
 .pagination>li>span:hover {
-    background-color: #D1D4DC;
+    background-color: #363636;
 }
 
-.pagination>.active>a, 
-.pagination>.active>span, 
-.pagination>.active>a:hover, 
-.pagination>.active>span:hover, 
-.pagination>.active>a:focus, 
-.pagination>.active>span:focus {
-    background-color: #39486D;
+.pagination>.active>a,
+.pagination>.active>span {
+    background-color: #D1D4DC;
     border-color: #D1D4DC;
+}
+
+.pagination>.active>a:hover,
+.pagination>.active>span:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span:focus,
+.pagination>.disabled>span,
+.pagination>.disabled>span:hover,
+.pagination>.disabled>span:focus,
+.pagination>.disabled>a,
+.pagination>.disabled>a:hover,
+.pagination>.disabled>a:focus {
+    background-color: #363636;
 }
 
 .well small {
