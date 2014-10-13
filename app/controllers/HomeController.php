@@ -15,12 +15,14 @@ class HomeController extends BaseController {
     |
     */
 
-    public function showWelcome()
+    public function index()
     {
-        // set a value in the session
-        Session::flash('key', 'lolol');
-
-        return View::make('hello');
+        return View::make('index');
+    }
+    
+    public function login()
+    {
+        return View::make('login');
     }
 
     public function showResume()
