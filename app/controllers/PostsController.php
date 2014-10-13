@@ -1,6 +1,7 @@
 <?php
 
-class PostsController extends \BaseController {
+class PostsController extends \BaseController
+{
 
     public function __construct()
     {
@@ -16,9 +17,9 @@ class PostsController extends \BaseController {
      */
     public function index()
     {
-        return View::make('posts.index', [
-            'posts' => Post::orderBy('id', 'DESC')->paginate(6)
-        ]);
+        $posts = Post::with('user')->orderBy('created_at', 'DESC')->paginate(6);
+        
+        return View::make('posts.index')->with('posts', $posts);
     }
 
 
@@ -99,7 +100,7 @@ class PostsController extends \BaseController {
         $validator = Validator::make(Input::all(), Post::$rules);
 
         if($validator->fails()) {
-            $message = "Yo, Why You Frontin'?";
+            $message = "Sorry, something went wrong.'?";
             
             Session::flash('errorMessage', $message);
             
@@ -109,6 +110,7 @@ class PostsController extends \BaseController {
 
             $post->title = Input::get('title');
             $post->content = Input::get('content');
+            $post->user_id = Auth::id();
             $post->save();
 
             $id = $post->id;
