@@ -79,8 +79,6 @@
         </div>
 
     </div><!-- /#pageWrap -->
-    @yield('footer')
-
     <!-- jQuery -->
     <script src="/jquery/jquery-1.11.1.js"></script>
     <!-- Bootstrap JavaScript -->
