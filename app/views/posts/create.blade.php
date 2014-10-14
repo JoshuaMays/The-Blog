@@ -10,10 +10,9 @@
         {{ Form::open(array('action' => 'PostsController@store')) }}
 
         @include('posts.form')
-            
-        
-        {{ Form::reset('CLEAR', array('class' => 'btn btn-md btn-outline')) }}
-        {{ Form::submit('SUBMIT', array('class' => "btn btn-md btn-outline")) }}
+
+        {{ Form::reset('CLEAR', array('class' => 'actionButtons btn btn-md btn-outline btn-omg')) }}
+        {{ Form::submit('SUBMIT', array('class' => "actionButtons btn btn-md btn-outline")) }}
 
         {{ Form::close() }}
     </div>
