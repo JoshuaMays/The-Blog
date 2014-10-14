@@ -4,7 +4,6 @@ use Conner\Tagging\TaggableTrait;
 
 class Post extends BaseModel
 {
-    
     const DATE_FORMAT = 'l, jS \\of F Y g:i A';
 
     // FORM FIELD RESTRICTIONS FOR CREATING/EDITING POSTS
