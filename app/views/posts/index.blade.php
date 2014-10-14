@@ -6,7 +6,7 @@
 
 @section('content')
         <h1 class="text-center">POSTS, POSTS, AND MAYBE SOME SPOTS</h1>
-        <p class="text-center">{{ link_to_action('PostsController@create','POST IT UP', null, array('class' => 'btn btn-xs btn-outline')) }}</p>
+        
         @foreach(array_chunk($posts->all(), 2) as $row)
             <div class="row">
              @forelse($row as $post)
@@ -25,7 +25,7 @@
               @endforelse
             </div>
         @endforeach
-        {{  $posts->appends(Request::only('tag'))->links() }}
+        {{  $posts->appends(Request::only(['tag','search']))->links() }}
 @stop
 
 
