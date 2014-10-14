@@ -20,9 +20,31 @@ class HomeController extends BaseController {
         return View::make('index');
     }
     
-    public function login()
+    public function showLogin()
     {
         return View::make('login');
+    }
+    
+    public function doLogin() {
+        
+        $credentials = [
+            'email'     => Input::get('email'),
+            'password'  => Input::get('password')
+        ];
+        
+        if (Auth::attempt($credentials, true))
+        {
+            return Redirect::Intended('/');
+        }
+        else {
+            return Redirect::back()->withInput();
+        }
+    }
+    
+    public function doLogout() {
+        Auth::logout();
+        return Redirect::action('HomeController@index');
+
     }
 
     public function showResume()

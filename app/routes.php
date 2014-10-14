@@ -20,3 +20,19 @@ Route::get('/portfolio', 'HomeController@showPortfolio');
 Route::resource('posts', 'PostsController');
 
 Route::resource('users', 'UsersController');
+
+Route::resource('tags', 'TagsController');
+
+/*
+|--------------------------------------------------------------------------
+| AUTH Routes
+|--------------------------------------------------------------------------
+*/
+// DISPLAY LOGIN FORM
+Route::get('/login', 'HomeController@showLogin');
+
+// LOG USER IN
+Route::post('/login', 'HomeController@doLogin');
+
+// LOG USER OUT
+Route::get('/logout', 'HomeController@doLogout');

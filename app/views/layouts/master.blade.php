@@ -9,16 +9,16 @@
     <title>@yield('title')</title>
 
     <!-- Bootstrap CSS -->
-    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Freelancer Theme CSS -->
-    <link href="/css/freelancer.css" rel="stylesheet">
+    <link href="{{ asset('/css/freelancer.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <!-- Fonts -->
-    <link href="/css/fonts.css" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/css/fonts.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('//fonts.googleapis.com/css?family=Montserrat:400,700') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic') }}" rel="stylesheet" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -60,6 +60,14 @@
                         <li class="page-scroll">
                             <a href="{{{ action('PostsController@index') }}}">Blog</a>
                         </li>
+                        <li class="page-scroll">
+                        @if (Auth::check())
+                            {{ link_to_action('HomeController@doLogout', 'Logout') }}
+                        
+                        @else
+                            {{ link_to_action('HomeController@showLogin', 'Login') }}
+                        
+                        @endif
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -80,9 +88,11 @@
 
     </div><!-- /#pageWrap -->
     <!-- jQuery -->
-    <script src="/jquery/jquery-1.11.1.js"></script>
+    <script src="{{ asset("/jquery/jquery-1.11.1.js") }}"></script>
+    <script src="{{ asset("/jquery/jquery-ui.min.js") }}"></script>
     <!-- Bootstrap JavaScript -->
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ asset("/bootstrap/js/bootstrap.min.js") }}"></script>
+    
     @yield('bottom-script')
 </body>
 </html>
