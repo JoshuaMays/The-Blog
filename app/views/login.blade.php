@@ -23,7 +23,7 @@
         </div>
         
         <div class="form-group">
-            {{ Form::submit('SIGN IN', array('class' => 'btn btn-md btn-outline')) }}
+            {{ Form::submit('SIGN IN', array('class' => 'actionButtons btn btn-md btn-outline')) }}
         </div>
         {{ Form::close() }}
     </div>
