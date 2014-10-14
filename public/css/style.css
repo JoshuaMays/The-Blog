@@ -105,10 +105,15 @@ textarea { height: auto; }
     text-shadow: 1px 1px 15px rgba(255, 255, 255, .5);
 }
 
+.navbar-fixed-top, .navbar-fixed-bottom {
+  position: relative; 
+}
+
 .navbar-fixed-top .navbar-collapse, 
 .navbar-fixed-bottom .navbar-collapse {
     max-height: 400px;
 }
+
 
 .pagination>li>a,
 .pagination>li>span {
