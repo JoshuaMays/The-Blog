@@ -11,10 +11,8 @@
         {{ Form::model($post, array('action' => ['PostsController@update', $post->id], 'method' => 'put')) }}
 
             @include('posts.form')
-            <div id="editButtons" class="form-group">
-                {{ Form::reset('CLEAR', array('class' => 'btn btn-md btn-outline')) }}
-                {{ Form::submit('SUBMIT', array('class' => 'btn btn-md btn-outline')) }}
-            </div>
+                {{ Form::reset('CLEAR', array('class' => 'actionButtons btn btn-md btn-outline btn-omg')) }}
+                {{ Form::submit('SUBMIT', array('class' => 'actionButtons btn btn-md btn-outline')) }}
         {{ Form::close() }}
     </div>
 @stop
