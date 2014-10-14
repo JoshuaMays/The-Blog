@@ -15,10 +15,19 @@
                 </article>
             </div>
         </div>
-        {{ link_to_action('PostsController@edit', "EDIT", $post->id, array('class' => 'adminButtons btn btn-xs btn-outline pull-left', 'role' => 'button')) }}
-        {{ Form::open(array('action' => ['PostsController@destroy', $post->id], 'method' => "delete", 'id' => 'deleteForm')) }}
-            {{ Form::submit('DELETE',['class'=>'adminButtons btn btn-xs btn-omg btn-outline pull-left']) }}
-        {{ Form::close() }}
+
+        @if(Auth::check())
+
+            {{ link_to_action('PostsController@edit', "EDIT", $post->id, array('class' => 'actionButtons btn btn-xs btn-outline pull-left', 'role' => 'button')) }}
+            {{ Form::open(array('action' => ['PostsController@destroy', $post->id], 'method' => "delete", 'id' => 'deleteForm')) }}
+                {{ Form::submit('DELETE',['class'=>'actionButtons btn btn-xs btn-omg btn-outline pull-left']) }}
+            {{ Form::close() }}
+
+        @else
+
+            {{ link_to_action('PostsController@index', "BACK", null, array('class' => 'actionButtons btn btn-xs btn-outline pull-left', 'role' => 'button')) }}
+
+        @endif
 @stop
 
 @section('bottom-script')
@@ -28,7 +37,6 @@
             if (!confirm('Are you sure?')) {
                 e.preventDefault();
             }
-
         });
     </script>
 @stop
