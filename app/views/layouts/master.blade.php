@@ -46,28 +46,48 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="hidden">
-                            <a href="{{{ action('PostsController@index') }}}"></a>
+                            <a href="#"></a>
                         </li>
                         <li class="page-scroll">
-                            <a href="{{{ action('PostsController@index') }}}">Home</a>
+                            {{ link_to_action('HomeController@index', 'Home') }}
                         </li>
                         <li class="page-scroll">
-                            <a href="{{{ action('HomeController@showPortfolio') }}}">Portfolio</a>
+                            {{ link_to_action('HomeController@showPortfolio','Portfolio') }}
                         </li>
                         <li class="page-scroll">
-                            <a href="{{{ action('HomeController@showResume') }}}">Resume</a>
+                            {{ link_to_action('HomeController@showResume', 'Resume') }}
                         </li>
                         <li class="page-scroll">
-                            <a href="{{{ action('PostsController@index') }}}">Blog</a>
+                            {{ link_to_action('PostsController@index', 'Blog') }}
                         </li>
                         <li class="page-scroll">
+
                         @if (Auth::check())
+
+                            {{ link_to_action('PostsController@create', 'Write') }}
+
+                        </li>
+                        <li class="page-scroll">
                             {{ link_to_action('HomeController@doLogout', 'Logout') }}
-                        
+
                         @else
+
                             {{ link_to_action('HomeController@showLogin', 'Login') }}
-                        
+
                         @endif
+
+                        </li>
+                        <li class="page-scroll">
+                            <a id="searchDrop"><i class="glyphicon glyphicon-search"></i></a>
+                        </li>
+                        <li class="page-scroll">
+                                {{ Form::open(array('action' => 'PostsController@index', 'class' => 'form-inline', 'method' => 'GET')) }}
+                                    <div id="searchInput" class="form-group">
+                                        {{ Form::text('search', Input::get('search'), array('class' =>'form-control', 'id' => 'search', 'placeholder' => "Search")) }}
+                                        {{ Form::submit('GO', array('class' => "btn btn-xs")) }}
+                                    </div>
+                                {{ Form::close() }}
+                        </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -85,14 +105,26 @@
         @yield('content')
 
         </div>
-
     </div><!-- /#pageWrap -->
     <!-- jQuery -->
     <script src="{{ asset("/jquery/jquery-1.11.1.js") }}"></script>
     <script src="{{ asset("/jquery/jquery-ui.min.js") }}"></script>
     <!-- Bootstrap JavaScript -->
     <script src="{{ asset("/bootstrap/js/bootstrap.min.js") }}"></script>
-    
+    <script>
+        $("#searchInput").hide();
+        $(document).ready(function()
+        {
+            
+            
+            $("#searchDrop").click(function(e)
+            {
+                e.preventDefault();
+                $("#searchInput").slideToggle();
+            });
+        });
+    </script>
+
     @yield('bottom-script')
 </body>
 </html>
