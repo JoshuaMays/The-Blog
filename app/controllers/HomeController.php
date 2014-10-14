@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\MessageBag;
+
 class HomeController extends BaseController {
 
     /*
@@ -32,12 +34,14 @@ class HomeController extends BaseController {
             'password'  => Input::get('password')
         ];
         
+        $errors = new MessageBag(['password' => ['Email and/or password invalid.']]);
+        
         if (Auth::attempt($credentials, true))
         {
             return Redirect::Intended('/');
         }
         else {
-            return Redirect::back()->withInput();
+            return Redirect::back()->withInput()->withErrors($errors);
         }
     }
     
