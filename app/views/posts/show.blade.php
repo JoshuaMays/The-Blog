@@ -13,16 +13,12 @@
                     <p><small>{{{ $post->created_at->format(Post::DATE_FORMAT) }}}</small></p>
                     <p>{{{ $post->content }}}</p>
                 </article>
-                    {{ link_to_action('PostsController@edit', "EDIT", $post->id, array('class' => 'btn btn-xs btn-outline pull-left', 'role' => 'button')) }}
-                    {{ Form::open(array('action' => ['PostsController@destroy', $post->id], 'method' => "delete", 'id' => 'deleteForm')) }}
-                        {{ Form::submit('DELETE',['class'=>'btn btn-xs btn-omg btn-outline pull-left']) }}
-                    {{ Form::close() }}
             </div>
         </div>
-@stop
-
-@section('footer')
-    {{ link_to_action('PostsController@index', 'BACK', null, array('id' => 'indexLink', 'class' => 'btn btn-xs btn-outline')) }}
+        {{ link_to_action('PostsController@edit', "EDIT", $post->id, array('class' => 'adminButtons btn btn-xs btn-outline pull-left', 'role' => 'button')) }}
+        {{ Form::open(array('action' => ['PostsController@destroy', $post->id], 'method' => "delete", 'id' => 'deleteForm')) }}
+            {{ Form::submit('DELETE',['class'=>'adminButtons btn btn-xs btn-omg btn-outline pull-left']) }}
+        {{ Form::close() }}
 @stop
 
 @section('bottom-script')
