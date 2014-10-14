@@ -14,20 +14,19 @@
                     <p>{{{ $post->content }}}</p>
                 </article>
             </div>
-        </div>
+            <div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
+            @if(Auth::check())
 
-        @if(Auth::check())
+                {{ link_to_action('PostsController@edit', "EDIT", $post->id, array('class' => 'actionButtons btn btn-xs btn-outline pull-left', 'role' => 'button')) }}
+                {{ Form::open(array('action' => ['PostsController@destroy', $post->id], 'method' => "delete", 'id' => 'deleteForm')) }}
+                    {{ Form::submit('DELETE',['class'=>'actionButtons btn btn-xs btn-omg btn-outline pull-left']) }}
+                {{ Form::close() }}
 
-            {{ link_to_action('PostsController@edit', "EDIT", $post->id, array('class' => 'actionButtons btn btn-xs btn-outline pull-left', 'role' => 'button')) }}
-            {{ Form::open(array('action' => ['PostsController@destroy', $post->id], 'method' => "delete", 'id' => 'deleteForm')) }}
-                {{ Form::submit('DELETE',['class'=>'actionButtons btn btn-xs btn-omg btn-outline pull-left']) }}
-            {{ Form::close() }}
-
-        @else
-
+            @endif
+            
             {{ link_to_action('PostsController@index', "BACK", null, array('class' => 'actionButtons btn btn-xs btn-outline pull-left', 'role' => 'button')) }}
-
-        @endif
+            </div>
+        </div>
 @stop
 
 @section('bottom-script')
