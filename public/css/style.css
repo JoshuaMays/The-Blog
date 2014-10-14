@@ -33,13 +33,13 @@ textarea { height: auto; }
     right: 10px;
 }
 
+#searchInput {
+    margin: 0 15px;
+}
 
-/*#push,
-#footer {
-    height: 30px;
-    color: #000;
-    background-color: #F8F8F8;
-}*/
+#search  {
+    margin-bottom: 10px;
+}
 
 #wrap {
     min-height: 100%;
@@ -48,8 +48,8 @@ textarea { height: auto; }
     /*margin: 0 auto -55px;*/
 }
 
-.adminButtons {
-    margin: 10px 5px;
+.actionButtons {
+    margin: 10px 10px 10px 0px;
 }
 
 .btn-outline {
@@ -105,6 +105,11 @@ textarea { height: auto; }
     text-shadow: 1px 1px 15px rgba(255, 255, 255, .5);
 }
 
+.navbar-fixed-top .navbar-collapse, 
+.navbar-fixed-bottom .navbar-collapse {
+    max-height: 400px;
+}
+
 .pagination>li>a,
 .pagination>li>span {
     color: #39486D;
@@ -140,16 +145,47 @@ textarea { height: auto; }
     font-size: 10px;
 }
 
-@media (max-width: 767px) {
-    #footer {
-        margin-left: -20px;
-        margin-right: -20px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+@media only screen and (max-width: 767px) {
 
     .contentWrapper {
         margin-top: 0px;
     }
+
 }
 
+@media only screen and (min-width: 767px) and (max-width:991px) {
+    
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    #searchInput {
+        margin: 7px 0 0 0;
+        max-width: 175px;
+        width: 140px;
+    }
+
+    #searchInput .btn {
+        height: 43px;
+        margin-bottom: 10px;
+    }
+
+    #search {
+        max-width: 100px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #searchInput {
+        max-width: 200px;
+        margin: 7px 0 0 0;
+    }
+    
+    #searchInput .btn {
+        height: 43px;
+        margin-bottom: 10px;
+    }
+
+    #search  {
+        max-width: 150px;
+    }
+}
