@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
+use Conner\Tagging\TaggableTrait;
 
 class BaseModel extends Eloquent {
     use SoftDeletingTrait;
