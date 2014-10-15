@@ -23,10 +23,10 @@
           <address>
             <strong>Joshua Mays</strong><br>
             <!-- <i> tags used as icon elements for fontawesome icons -->
-            <a class="socialLinks" href="mailto:joshua.r.mays@gmail.com"><i class="fa fa-share iconColor"></i> joshua.r.mays@gmail.com</a><br>
-            <a class="socialLinks" href="tel:2102864336"> <i class="fa fa-mobile iconColor"></i> 210.286.4336</a><br>
-            <a class="socialLinks" href="https://www.linkedin.com/profile/view?id=60812166"><i class="fa fa-linkedin-square iconColor"></i> LinkedIn</a><br>
-            <a class="socialLinks" href="https://github.com/JoshuaMays"><i class="fa fa-github-alt iconColor"></i> GitHub</a>
+            <a class="socialLinks" href="mailto:joshua.r.mays@gmail.com" target="_blank"><i class="fa fa-share iconColor"></i> joshua.r.mays@gmail.com</a><br>
+            <a class="socialLinks" href="tel:2102864336" target="_blank"> <i class="fa fa-mobile iconColor"></i> 210.286.4336</a><br>
+            <a class="socialLinks" href="https://www.linkedin.com/profile/view?id=60812166" target="_blank"><i class="fa fa-linkedin-square iconColor"></i> LinkedIn</a><br>
+            <a class="socialLinks" href="https://github.com/JoshuaMays" target="_blank"><i class="fa fa-github-alt iconColor"></i> GitHub</a>
           </address>
         </div>
       </div>
