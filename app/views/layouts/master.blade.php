@@ -31,7 +31,7 @@
     <div id="wrap">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
+            <div id="navBox"class="container">
                 <!-- Brand and toggle grouped for better mobile display -->
                 <div class="navbar-header page-scroll">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -92,7 +92,7 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        <div class="container contentWrapper">
+        <div id="contentWrapper" class="container">
 
             @if (Session::has('successMessage'))
                 <div class="alert alert-success alert-dismissible">{{{ Session::get('successMessage') }}}</div>
