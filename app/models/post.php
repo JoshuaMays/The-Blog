@@ -14,7 +14,7 @@ class Post extends BaseModel
     
     protected $table = 'posts';
     
-    protected $fillable = ['title', 'content'];
+    protected $fillable = ['title', 'content', 'image_path'];
     
     public function user()
     {
