@@ -17,9 +17,9 @@ Route::get('/resume', 'HomeController@showResume');
 
 Route::get('/portfolio', 'HomeController@showPortfolio');
 
-Route::resource('posts', 'PostsController');
+Route::get('/posts/manage', 'PostsController@manage');
 
-Route::resource('users', 'UsersController');
+Route::get('/posts/massmanage', 'PostsController@massManage');
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +34,11 @@ Route::post('/login', 'HomeController@doLogin');
 
 // LOG USER OUT
 Route::get('/logout', 'HomeController@doLogout');
+/*
+|--------------------------------------------------------------------------
+| Resource Controller Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('posts', 'PostsController');
+
+Route::resource('users', 'UsersController');
