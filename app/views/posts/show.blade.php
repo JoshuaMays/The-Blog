@@ -9,6 +9,11 @@
             <div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 well">
                 <article>
                     <h2>{{{ $post->title }}}</h2>
+                    
+                    @if($post->image_path != null)
+                    <img src="{{{ $post->image_path }}}" alt="{{{ $post->title }}}">
+                    @endif
+                    
                     <p><small> {{{ 'posted by: ' . $post->user->first_name . ' ' .$post->user->last_name }}}</small></p>
                     <p><small>{{{ $post->created_at->format(Post::DATE_FORMAT) }}}</small></p>
                     <p>{{{ $post->content }}}</p>
