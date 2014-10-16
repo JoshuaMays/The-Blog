@@ -22,6 +22,10 @@ table a.btn, table a.btn:hover {
 
 textarea { height: auto; }
 
+.blogImg {
+    max-width: 100%;
+}
+
 #editButtons {
     padding-left: 5%;
 }

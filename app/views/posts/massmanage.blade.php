@@ -18,7 +18,7 @@
                 <td class="mass-delete-check">{{ Form::checkbox('delete-check', $post->id, false, array('class' => 'delete-check') ) }}
                 <td id="post-title-{{{ $post->id }}}">{{{ $post->title }}}</td>
                 <td>{{{ $post->user->first_name }}} {{{ $post->user->last_name }}}</td>
-                <td>{{{ $post->created_at }}}</td>
+                <td>{{{ $post->created_at->format(Post::SHORT_DATE_FORMAT) }}}</td>
                 <td>
                     <div class="btn-group">
                         {{ link_to_action('PostsController@edit', 'Edit', $post->id, array('class' => 'btn btn-default')) }}
@@ -39,14 +39,13 @@
 
 <script>
     var csrfToken = "{{{ Session::get('_token') }}}";
-    var fadeTimer = 0;
+    var fadeTimer = 500;
     $(".delete-btn").click(function()
     {
         $(".delete-check:checked").each(function(){
 
             var postId = $(this).val();
             var postTitle = $("#post-title-" + postId).text();
-            fadeTimer += 750;
             
             if(confirm('Are you sure that you want to delete the post?')) {
                 $.ajax({
@@ -58,6 +57,7 @@
                     },
                     success: function(data) {
                         if (data.success) {
+                            fadeTimer += 750;
                             alert(data.message);
                             $("#post-row-" + postId).fadeOut(fadeTimer);
                         }

@@ -15,11 +15,10 @@
                         <h3>{{{ $post->title }}}</h3>
                         
                         @if($post->image_path != null)
-                        <img src="{{ $post->image_path }}" alt="image">
+                        <img src="{{ $post->image_path }}" alt="blog image" class="blogImg">
                         @endif
                         
-                        <p><small> {{{ 'posted by: ' . $post->user->first_name . ' ' .$post->user->last_name }}}</small></p>
-                        <p><small>{{{ $post->created_at->format(Post::DATE_FORMAT) }}}</small></p>
+                        <p><small> {{{ 'Posted by: ' . $post->user->first_name . ' ' .$post->user->last_name }}} &mdash; {{{ $post->created_at->format(Post::DATE_FORMAT) }}}</small></p>
                         <!-- LIMIT LENGTH OF BLOG PREVIEW TO 100 CHARS, IF LONGER ADD TO SUBSTRING ... -->
                         <p>{{{ str_limit($post->content, $limit = 100, $end = '...') }}}</p>
                         <p>{{ link_to_action('PostsController@show','VIEW', $post->id, array('class' => 'btn btn-xs btn-outline', 'role' => 'button')) }}</p>
