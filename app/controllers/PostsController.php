@@ -52,6 +52,14 @@ class PostsController extends \BaseController
     {
         $post = New Post();
 
+        if (Input::hasFile('image')) {
+            $file = Input::file('image');
+            $destination_path = public_path() . '/img-upload/';
+            $filename = uniqid('img') . '_' . $file->getClientOriginalName();
+            $uploadSuccess = $file->move($destination_path, $filename);
+            $post->image_path = '/img-upload/' . $filename;
+        }
+
         return $this->savePost($post);
     }
 
@@ -149,11 +157,33 @@ class PostsController extends \BaseController
         catch(ModelNotFoundException $e) {
             App::abort(404);
         }
-        
+
         $post->delete();
-        Session::flash('successMessage', "You deleted: $post->title");
-        
+        $message = "So long, $post->title!";
+
+        if (Request::ajax()) {
+            return Response::json(array(
+                'success' => true,
+                'message' => $message
+            ));
+        }
+        else {
+            Session::flash('successMessage', $message);
             return Redirect::action('PostsController@index');
+        }
+    }
+    
+    public function manage()
+    {
+        $posts = Post::with('user')->paginate(8);
         
+        return View::make('posts.manage')->with('posts', $posts);
+    }
+    
+    public function massManage()
+    {
+        $posts = Post::with('user')->orderBy('created_at', 'DESC')->paginate(8);
+        
+        return View::make('posts.massmanage')->with('posts', $posts);
     }
 }
