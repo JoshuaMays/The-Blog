@@ -5,7 +5,8 @@
     "license": "MIT",
     "require": {
         "laravel/framework": "4.2.*",
-        "rtconner/laravel-tagging": "~0.4"
+        "rtconner/laravel-tagging": "~0.4",
+        "zizaco/entrust": "1.2.*@dev"
     },
     "require-dev": {
         "way/generators": "~2.6",
