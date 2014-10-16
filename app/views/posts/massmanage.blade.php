@@ -39,14 +39,13 @@
 
 <script>
     var csrfToken = "{{{ Session::get('_token') }}}";
-    var fadeTimer = 0;
+    var fadeTimer = 500;
     $(".delete-btn").click(function()
     {
         $(".delete-check:checked").each(function(){
 
             var postId = $(this).val();
             var postTitle = $("#post-title-" + postId).text();
-            fadeTimer += 750;
             
             if(confirm('Are you sure that you want to delete the post?')) {
                 $.ajax({
@@ -58,6 +57,7 @@
                     },
                     success: function(data) {
                         if (data.success) {
+                            fadeTimer += 750;
                             alert(data.message);
                             $("#post-row-" + postId).fadeOut(fadeTimer);
                         }
