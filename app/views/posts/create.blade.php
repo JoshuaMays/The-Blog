@@ -7,7 +7,7 @@
 @section('content')
     <div class="col-md-8 col-md-offset-2">
         <h1>@yield('title')</h1>
-        {{ Form::open(array('action' => 'PostsController@store')) }}
+        {{ Form::open(array('action' => 'PostsController@store', 'files' => true)) }}
 
         @include('posts.form')
 
